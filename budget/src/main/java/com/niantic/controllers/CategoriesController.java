@@ -36,7 +36,7 @@ public class CategoriesController
     public String details(Model model, @PathVariable int id)
     {
        var category = categoryDao.getCategoryById(id);
-       model.addAttribute("categories", category);
+       model.addAttribute("category", category);
        return "categories/details";
     }
 
