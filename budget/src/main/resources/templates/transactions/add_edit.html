@@ -16,21 +16,21 @@
             <div class="mb-3">
                 <label th:for="*{userId}">User Id</label>
                 <select class="form-select" th:field="*{userId}">
-                    <!-- <option th:value="" th:selected>Select User</option> -->
+                    <option th:value="0" th:disabled="disabled">--Select User--</option>
                     <option th:each="user:${users}" th:value="${user.userId}" th:text="${user.userName}"></option>
                 </select>
             </div>
             <div class="mb-3">
                 <label th:for="*{categoryId}">Category Name</label>
                 <select class="form-select" th:field="*{categoryId}">
-                    <!-- <option selected value="">--Select Category--</option> -->
+                    <option th:value="0" th:disabled="disabled">--Select Category--</option>
                     <option th:each="category:${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}"></option>
                 </select>
             </div>
             <div class="mb-3">
                 <label th:for="*{vendorId}">Vendor Id</label>
                 <select class="form-select" th:field="*{vendorId}">
-                    <!-- <option selected disabled value="">--Select Vendor--</option> -->
+                    <option value="0" th:disabled="disabled">--Select Vendor--</option>
                     <option th:each="vendor:${vendors}" th:value="${vendor.vendorId}" th:text="${vendor.vendorName}"></option>
                 </select>
             </div>
