@@ -31,6 +31,20 @@ public class TransactionsController
         return "transactions/index";
     }
 
+    @GetMapping("/transactions/add")
+    public String addTransactions(Model model) {
+        model.addAttribute("transaction", new Transaction());
+        model.addAttribute("action", "add");
+        return "transactions/add_edit";
+    }
+
+    @PostMapping("/transactions/add")
+    public String addActor(Model model, @ModelAttribute("transaction") Transaction transaction) {
+        transactionDao.addTransaction(transaction);
+        model.addAttribute("transaction", transaction);
+        return "transactions/add_success";
+    }
+
 
 
 
