@@ -2,8 +2,12 @@ package com.niantic.controllers;
 
 import com.niantic.models.Category;
 import com.niantic.models.Transaction;
+import com.niantic.models.User;
+import com.niantic.models.Vendor;
 import com.niantic.services.CategoryDao;
 import com.niantic.services.TransactionDao;
+import com.niantic.services.UserDao;
+import com.niantic.services.VendorDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +22,9 @@ import java.util.ArrayList;
 public class TransactionsController
 {
     TransactionDao transactionDao = new TransactionDao();
+    CategoryDao categoryDao = new CategoryDao();
+    UserDao userDao = new UserDao();
+    VendorDao vendorDao = new VendorDao();
 
 
     @GetMapping("/transactions")
@@ -35,6 +42,16 @@ public class TransactionsController
     public String addTransactions(Model model) {
         model.addAttribute("transaction", new Transaction());
         model.addAttribute("action", "add");
+
+        ArrayList<Category>  categories = categoryDao.getAllCategories();
+        model.addAttribute("categories", categories);
+
+        ArrayList<User> users = userDao.getAllUsers();
+        model.addAttribute("users", users);
+
+        ArrayList<Vendor> vendors = vendorDao.getAllVendors();
+        model.addAttribute("vendors", vendors);
+
         return "transactions/add_edit";
     }
 
