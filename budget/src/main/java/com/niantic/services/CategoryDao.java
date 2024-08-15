@@ -125,5 +125,32 @@ public class CategoryDao {
 
     }
 
+    public void updateCategory(Category category)
+    {
+        String sql = """
+                UPDATE categories
+                SET category_name = ?
+                    , description = ?
+                WHERE category_id = ?
+                """;
+
+        jdbcTemplate.update(sql
+                , category.getCategoryName()
+                , category.getDescription()
+                , category.getCategoryId());
+    }
+
+
+    public void deleteCategory(int categoryId)
+    {
+        String sql = """
+                DELETE FROM categories
+                WHERE category_id = ?
+                """;
+
+        jdbcTemplate.update(sql, categoryId);
+    }
+
+
 
 }
