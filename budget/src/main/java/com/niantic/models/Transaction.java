@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class Transaction {
     private int transactionId;
     private int userId;
-    private int subCategoryId;
+    private int categoryId;
     private int vendorId;
     private LocalDate date;
     private BigDecimal amount;
@@ -15,10 +15,10 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction(int transactionId, int userId, int subCategoryId, int vendorId, LocalDate date, BigDecimal amount, String notes) {
+    public Transaction(int transactionId, int userId, int categoryId, int vendorId, LocalDate date, BigDecimal amount, String notes) {
         this.transactionId = transactionId;
         this.userId = userId;
-        this.subCategoryId = subCategoryId;
+        this.categoryId = categoryId;
         this.vendorId = vendorId;
         this.date = date;
         this.amount = amount;
@@ -41,12 +41,12 @@ public class Transaction {
         this.userId = userId;
     }
 
-    public int getSubCategoryId() {
-        return subCategoryId;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setSubCategoryId(int subCategoryId) {
-        this.subCategoryId = subCategoryId;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public int getVendorId() {
@@ -81,8 +81,8 @@ public class Transaction {
         this.notes = notes;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%-10s %15s        %s", date.toString(), amount, notes);
-    }
+//    @Override
+//    public String toString() {
+//        return String.format("%-10s %15s        %s", date.toString(), amount, notes);
+//    }
 }
