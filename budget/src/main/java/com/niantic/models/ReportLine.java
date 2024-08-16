@@ -1,5 +1,9 @@
 package com.niantic.models;
 
+import com.niantic.services.CategoryDao;
+import com.niantic.services.UserDao;
+import com.niantic.services.VendorDao;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -19,6 +23,15 @@ public class ReportLine {
         this.date = date;
         this.amount = amount;
         this.notes = notes;
+    }
+
+    public ReportLine(Transaction transaction) {
+        userName = (new UserDao()).getUserById(transaction.getUserId()).getUserName();
+        categoryName = (new CategoryDao()).getCategoryById(transaction.getCategoryId()).getCategoryName();
+        vendorName = (new VendorDao()).getVendorById(transaction.getVendorId()).getVendorName();
+        date = transaction.getDate();
+        amount = transaction.getAmount();
+        notes = transaction.getNotes();
     }
 
     public ReportLine() {
