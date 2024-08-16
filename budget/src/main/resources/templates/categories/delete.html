@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+
+<main class="container mt-4">
+
+    <h1>Delete Category</h1>
+
+    <h2>You are about to delete the following category.</h2>
+
+    <table class="table">
+        <tr><th>Id:</th> <td th:text="${categories.categoryId}"></td></tr>
+        <tr><th>Category Name:</th> <td th:text="${categories.categoryName}"></td></tr>
+        <tr><th>Description:</th> <td th:text="${categories.description}"></td></tr>
+    </table>
+
+    <form method="post">
+        <input type="submit" class="btn btn-danger" value="Delete">
+        <a href="/" class="btn btn-secondary">Cancel</a>
+    </form>
+
+</main>
+
+</body>
+</html>
