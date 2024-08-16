@@ -1,9 +1,6 @@
 package com.niantic.controllers;
 
-import com.niantic.models.Category;
-import com.niantic.models.ReportLine;
-import com.niantic.models.Transaction;
-import com.niantic.models.User;
+import com.niantic.models.*;
 import com.niantic.services.CategoryDao;
 import com.niantic.services.TransactionDao;
 import com.niantic.services.UserDao;
@@ -47,6 +44,19 @@ public class ReportsController {
 
     }
 
+    @GetMapping("/reports/vendor")
+    public String getReportByVendor(Model model) {
+
+        ArrayList<Vendor> vendors = vendorDao.getAllVendors();
+
+        model.addAttribute("vendors", vendors);
+        model.addAttribute("vendor", new Vendor());
+
+        return "reports/vendor";
+
+    }
+
+
     @PostMapping("/reports/category")
     public String getReportsByCategory(Model model, @ModelAttribute("category") Category category) {
         int categoryId = category.getCategoryId();
@@ -82,6 +92,26 @@ public class ReportsController {
         model.addAttribute("name", userName);
 
         return "reports/index";
+
+    }
+
+    @PostMapping("/reports/vendor")
+    public String getReportsByVendor(Model model, @ModelAttribute("vendor") Vendor vendor) {
+        int vendorId = vendor.getVendorId();
+        String vendorName = vendorDao.getVendorById(vendorId).getVendorName();
+
+        ArrayList<Transaction> transactions = transactionDao.getTransactionsByVendor(vendorId);
+        ArrayList<ReportLine> reportLines = new ArrayList();
+
+        for (var transaction : transactions) {
+            reportLines.add(new ReportLine(transaction));
+        }
+        model.addAttribute("reportlines", reportLines);
+        model.addAttribute("reportType", "vendor");
+        model.addAttribute("name", vendorName);
+
+        return "reports/index";
+
 
     }
 
