@@ -6,3 +6,7 @@ body, .navbar {
     font-family: 'Poppins', sans-serif;
 }
 
+.add-transaction-form {
+    max-width: 450px;
+}
+

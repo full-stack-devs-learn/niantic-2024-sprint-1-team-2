@@ -1,55 +1,70 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/head :: head"></head>
 
-
 <body>
     <div th:replace="fragments/nav :: nav"></div>
 
-    <main class="container mt-4">
-        <h1 th:if="${action} =='add'">Add Transaction</h1>
-        <h1 th:if="${action} =='edit'">Edit Transaction</h1>
+    <main class="d-flex flex-column align-items-center gap-3 mt-5">
+        <h1 class="fw-bold mb-5" th:if="${action} =='add'">Add Transaction</h1>
+        <h1 class="fw-bold mb-5" th:if="${action} =='edit'">Edit Transaction</h1>
 
-        <form method="post" th:object="${transaction}">
-            <div class="mb-3">
-                <label th:for="*{userId}">User Id</label>
-                <select class="form-select" th:field="*{userId}">
-                    <option th:value="0" th:disabled="disabled">--Select User--</option>
-                    <option th:each="user:${users}" th:value="${user.userId}" th:text="${user.userName}"></option>
-                </select>
+        <form method="post" th:object="${transaction}" class="w-75 add-transaction-form">
+            <div class="mb-3 row">
+                <label th:for="*{userId}" class="col-sm-4 col-form-label">User Name</label>
+                <div class="col-sm-8">
+                    <select class="form-select" th:field="*{userId}">
+                        <option th:value="0" th:disabled="disabled">--Select User--</option>
+                        <option th:each="user:${users}" th:value="${user.userId}" th:text="${user.userName}"></option>
+                    </select>
+                </div>
             </div>
-            <div class="mb-3">
-                <label th:for="*{categoryId}">Category Name</label>
-                <select class="form-select" th:field="*{categoryId}">
-                    <option th:value="0" th:disabled="disabled">--Select Category--</option>
-                    <option th:each="category:${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}"></option>
-                </select>
+            <div class="mb-3 row">
+                <label th:for="*{categoryId}" class="col-sm-4 col-form-label">Category Name</label>
+                <div class="col-sm-8">
+                    <select class="form-select" th:field="*{categoryId}">
+                        <option th:value="0" th:disabled="disabled">--Select Category--</option>
+                        <option th:each="category:${categories}" th:value="${category.categoryId}"
+                            th:text="${category.categoryName}"></option>
+                    </select>
+                </div>
             </div>
-            <div class="mb-3">
-                <label th:for="*{vendorId}">Vendor Id</label>
-                <select class="form-select" th:field="*{vendorId}">
-                    <option value="0" th:disabled="disabled">--Select Vendor--</option>
-                    <option th:each="vendor:${vendors}" th:value="${vendor.vendorId}" th:text="${vendor.vendorName}"></option>
-                </select>
+            <div class="mb-3 row">
+                <label th:for="*{vendorId}" class="col-sm-4 col-form-label">Vendor Name</label>
+                <div class="col-sm-8">
+                    <select class="form-select" th:field="*{vendorId}">
+                        <option value="0" th:disabled="disabled">--Select Vendor--</option>
+                        <option th:each="vendor:${vendors}" th:value="${vendor.vendorId}"
+                            th:text="${vendor.vendorName}">
+                        </option>
+                    </select>
+                </div>
             </div>
-            <div class="form-floating mb-3">
-                <input class="form-control" type="text" th:field="*{date}">
-                <label th:for="*{date}">Date</label>
+            <div class="mb-3 row">
+                <label th:for="*{date}" class="col-sm-4 col-form-label">Date</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="date" th:field="*{date}">
+                </div>
             </div>
-            <div class="form-floating mb-3">
-                <input class="form-control" type="text" th:field="*{amount}">
-                <label th:for="*{amount}">Amount</label>
+            <div class="mb-3 row">
+                <label th:for="*{amount}" class="col-sm-4 col-form-label">Amount</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" th:field="*{amount}" autocomplete="off">
+                </div>
             </div>
-            <div class="form-floating mb-3">
-                <input class="form-control" type="text" th:field="*{notes}">
-                <label th:for="*{Notes}">Notes</label>
+            <div class="mb-3 row">
+                <label th:for="*{Notes}" class="col-sm-4 col-form-label">Notes</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" th:field="*{notes}" autocomplete="off">
+                </div>
             </div>
-            <input class="btn btn-outline-danger" type="submit" value="Save">
+            <div class="text-center">
+                <input class="btn btn-outline-danger mt-5" type="submit" value="Save">
+            </div>
         </form>
 
     </main>
 </body>
 
-</html>
+</html>Í
