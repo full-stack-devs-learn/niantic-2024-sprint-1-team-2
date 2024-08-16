@@ -66,7 +66,7 @@ public class UserDao
 
     }
 
-    public User getUserId(int userId)
+    public User getUserById(int userId)
     {
 
         String sql = """

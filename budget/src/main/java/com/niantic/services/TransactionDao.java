@@ -175,7 +175,7 @@ public class TransactionDao {
                     , amount
                     , notes
                 FROM transactions
-                WHERE sub_category_id = ?;
+                WHERE category_id = ?;
                 """;
 
         SqlRowSet row = jdbcTemplate.queryForRowSet(sql, categoryId);
