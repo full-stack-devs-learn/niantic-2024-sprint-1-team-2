@@ -2,11 +2,20 @@
     box-sizing: border-box;
 }
 
+body {
+    font-size: 16px;
+}
+
 body, .navbar {
     font-family: 'Poppins', sans-serif;
 }
 
-.add-transaction-form {
+.add-transaction-form,
+.add-vendor-form {
     max-width: 450px;
 }
 
+h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 3rem;
+}
