@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+
+<body>
+<div th:replace="fragments/nav :: nav"></div>
+
+<main class="container mt-4">
+
+    <h1><span th:text="${users.userName}"></span> was added successfully.</h1>
+
+</main>
+
+</body>
+</html>

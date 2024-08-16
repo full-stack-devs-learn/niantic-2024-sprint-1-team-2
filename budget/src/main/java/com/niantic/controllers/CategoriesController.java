@@ -48,7 +48,7 @@ public class CategoriesController
     }
 
     @PostMapping("/categories/add")
-    public String addActor(Model model, @ModelAttribute("categories") Category category) {
+    public String addCategory(Model model, @ModelAttribute("categories") Category category) {
         categoryDao.addCategory(category);
         model.addAttribute("categories", category);
         return "categories/add_success";
