@@ -1,9 +1,6 @@
 package com.niantic.controllers;
 
-import com.niantic.models.Category;
-import com.niantic.models.Transaction;
-import com.niantic.models.User;
-import com.niantic.models.Vendor;
+import com.niantic.models.*;
 import com.niantic.services.CategoryDao;
 import com.niantic.services.TransactionDao;
 import com.niantic.services.UserDao;
@@ -19,8 +16,7 @@ import java.util.ArrayList;
 
 
 @Controller
-public class TransactionsController
-{
+public class TransactionsController {
     TransactionDao transactionDao = new TransactionDao();
     CategoryDao categoryDao = new CategoryDao();
     UserDao userDao = new UserDao();
@@ -39,11 +35,11 @@ public class TransactionsController
     }
 
     @GetMapping("/transactions/add")
-    public String addTransactions(Model model) {
+    public String addTransaction(Model model) {
         model.addAttribute("transaction", new Transaction());
         model.addAttribute("action", "add");
 
-        ArrayList<Category>  categories = categoryDao.getAllCategories();
+        ArrayList<Category> categories = categoryDao.getAllCategories();
         model.addAttribute("categories", categories);
 
         ArrayList<User> users = userDao.getAllUsers();
@@ -56,15 +52,36 @@ public class TransactionsController
     }
 
     @PostMapping("/transactions/add")
-    public String addActor(Model model, @ModelAttribute("transaction") Transaction transaction) {
+    public String addTransaction(Model model, @ModelAttribute("transaction") Transaction transaction) {
         transactionDao.addTransaction(transaction);
         model.addAttribute("transaction", transaction);
         return "transactions/add_success";
     }
 
+    @GetMapping("/transactions/{id}/edit")
+    public String editTransaction(Model model, @PathVariable int id) {
+        Transaction transaction = transactionDao.getTransactionById(id);
+        model.addAttribute("transaction", transaction);
+        model.addAttribute("action", "edit");
 
+        ArrayList<Category> categories = categoryDao.getAllCategories();
+        model.addAttribute("categories", categories);
 
+        ArrayList<User> users = userDao.getAllUsers();
+        model.addAttribute("users", users);
 
+        ArrayList<Vendor> vendors = vendorDao.getAllVendors();
+        model.addAttribute("vendors", vendors);
+
+        return "transactions/add_edit";
+    }
+
+    @PostMapping("/transactions/{id}/edit")
+    public String editTransaction(Model model, @ModelAttribute("transaction") Transaction transaction, @PathVariable int id) {
+        transaction.setTransactionId(id);
+        transactionDao.updateTransaction(transaction);
+        return "redirect:/transactions";
+    }
 
 
 }
