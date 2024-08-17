@@ -83,6 +83,22 @@ public class TransactionsController {
         return "redirect:/transactions";
     }
 
+    @GetMapping("/transactions/{id}/delete")
+    public String deleteTransaction(Model model, @PathVariable int id) {
+        Transaction transaction = transactionDao.getTransactionById(id);
+        ReportLine reportLine = new ReportLine(transaction);
+
+        model.addAttribute("transaction", transaction);
+        model.addAttribute("reportLine", reportLine);
+
+        return "transactions/delete";
+    }
+
+    @PostMapping("/transactions/{id}/delete")
+    public String deleteTransaction(@PathVariable int id) {
+        transactionDao.deleteTransaction(id);
+        return "redirect:/transactions";
+    }
 
 }
 
