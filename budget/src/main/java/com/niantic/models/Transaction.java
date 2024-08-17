@@ -1,5 +1,7 @@
 package com.niantic.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -8,6 +10,7 @@ public class Transaction {
     private int userId;
     private int categoryId;
     private int vendorId;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     private BigDecimal amount;
     private String notes;
