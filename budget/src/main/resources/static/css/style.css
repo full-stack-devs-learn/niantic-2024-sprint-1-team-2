@@ -15,6 +15,10 @@ body, .navbar {
     max-width: 450px;
 }
 
+.enter-year-form {
+    max-width: 300px;
+}
+
 /* index.html Styling */
 
 h1 {

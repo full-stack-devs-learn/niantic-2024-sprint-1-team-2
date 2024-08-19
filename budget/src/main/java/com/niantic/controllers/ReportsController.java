@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.Year;
 import java.util.ArrayList;
 
 @Controller
@@ -54,6 +56,20 @@ public class ReportsController {
 
         return "reports/vendor";
 
+    }
+
+    @GetMapping("/reports/year")
+    public String getReportByYear(Model model) {
+//        ArrayList<Transaction> transactions = transactionDao.getAllTransactions();
+//        int maxYear = 1900;
+//        int minYear = Year.now().getValue() + 1;
+//        for (var transaction : transactions) {
+//            minYear = Math.min(minYear, transaction.getDate().getYear());
+//            maxYear = Math.max(maxYear, transaction.getDate().getYear());
+//        }
+//        model.addAttribute("minYear", minYear);
+//        model.addAttribute("maxYear", maxYear);
+        return "reports/year";
     }
 
 
@@ -111,8 +127,22 @@ public class ReportsController {
         model.addAttribute("name", vendorName);
 
         return "reports/index";
+    }
 
 
+    @PostMapping("/reports/year")
+    public String getReportByYear(Model model, @RequestParam(required = true) String year) {
+        ArrayList<Transaction> transactions = transactionDao.getTransactionsByYear(Integer.parseInt(year));
+        ArrayList<ReportLine> reportLines = new ArrayList();
+
+        for (var transaction : transactions) {
+            reportLines.add(new ReportLine(transaction));
+        }
+        model.addAttribute("reportlines", reportLines);
+        model.addAttribute("reportType", "year");
+        model.addAttribute("name", "" + year);
+
+        return "reports/index";
     }
 
 
