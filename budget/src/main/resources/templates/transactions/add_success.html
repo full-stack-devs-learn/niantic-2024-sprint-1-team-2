@@ -8,9 +8,10 @@
 <body>
 <div th:replace="fragments/nav :: nav"></div>
 
-<main class="container mt-4">
+<main class="d-flex flex-column align-items-center gap-5 mt-5">
 
-    <h1><span th:text="${transaction.amount}"></span> was added successfully.</h1>
+    <h1>Transaction with amount $ <span th:text="${transaction.amount}"></span> was added successfully.</h1>
+    <a href="/transactions" class="mt-5">Go to Transactions Page</a>
 
 </main>
 
