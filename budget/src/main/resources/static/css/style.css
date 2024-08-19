@@ -11,7 +11,8 @@ body, .navbar {
 }
 
 .add-transaction-form,
-.add-vendor-form {
+.add-vendor-form,
+.choose-month-form {
     max-width: 450px;
 }
 

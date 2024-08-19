@@ -72,6 +72,11 @@ public class ReportsController {
         return "reports/year";
     }
 
+    @GetMapping("reports/month")
+    public String getReportByMonth() {
+        return "reports/month";
+    }
+
 
     @PostMapping("/reports/category")
     public String getReportsByCategory(Model model, @ModelAttribute("category") Category category) {
@@ -141,6 +146,23 @@ public class ReportsController {
         model.addAttribute("reportlines", reportLines);
         model.addAttribute("reportType", "year");
         model.addAttribute("name", "" + year);
+
+        return "reports/index";
+    }
+
+    @PostMapping("reports/month")
+    public String getReportByMonth(Model model, @RequestParam(required = true) int month) {
+        ArrayList<Transaction> transactions = transactionDao.getTransactionsByMonth(month);
+        String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+        ArrayList<ReportLine> reportLines = new ArrayList();
+
+        for (var transaction : transactions) {
+            reportLines.add(new ReportLine(transaction));
+        }
+
+        model.addAttribute("reportlines", reportLines);
+        model.addAttribute("reportType", "month");
+        model.addAttribute("name", months[month - 1]);
 
         return "reports/index";
     }
