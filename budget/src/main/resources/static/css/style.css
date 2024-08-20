@@ -20,6 +20,11 @@ body, .navbar {
     max-width: 300px;
 }
 
+.error-img {
+    width: 90%;
+    max-width: 1000px;
+}
+
 /* index.html Styling */
 
 h1 {
