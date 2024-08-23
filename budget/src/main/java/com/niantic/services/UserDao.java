@@ -66,32 +66,32 @@ public class UserDao
 
     }
 
-    public User getUserById(int userId)
-    {
-
+    public User getUserById(int userId) {
         String sql = """
                 SELECT user_id
-                , user_name
+                    , user_name
+                    , first_name
+                    , last_name
+                    , phone
+                    , email
                 FROM users
                 WHERE user_id = ?;
                 """;
 
         var row = jdbcTemplate.queryForRowSet(sql, userId);
 
-        if(row.next()) {
-            int usersId = row.getInt("user_id");
-            String usersName = row.getString("user_name");
-
-            User userById = new User();
-            userById.setUserId(usersId);
-            userById.setUserName(usersName);
-
-
-            return userById;
+        if (row.next()) {
+            return new User(
+                    row.getInt("user_id"),
+                    row.getString("user_name"),
+                    row.getString("first_name"),
+                    row.getString("last_name"),
+                    row.getString("phone"),
+                    row.getString("email")
+            );
         }
 
         return null;
-
     }
 
     public User getUserByName(String name) {

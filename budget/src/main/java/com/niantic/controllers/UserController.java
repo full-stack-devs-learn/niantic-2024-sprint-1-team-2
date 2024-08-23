@@ -31,7 +31,7 @@ public class UserController {
 
     @GetMapping("/users/add")
     public String addUser(Model model) {
-        model.addAttribute("users", new User());
+        model.addAttribute("user", new User());
         model.addAttribute("action", "add");
         return "users/add_edit";
     }
@@ -46,7 +46,7 @@ public class UserController {
     @GetMapping("/users/{id}/edit")
     public String editUser(Model model, @PathVariable int id) {
         User user = userDao.getUserById(id);
-        model.addAttribute("users", user);
+        model.addAttribute("user", user);
         model.addAttribute("action", "edit");
         return "users/add_edit";
     }

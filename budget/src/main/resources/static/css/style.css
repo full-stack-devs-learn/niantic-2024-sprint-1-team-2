@@ -28,6 +28,7 @@ body, .navbar {
 .add-transaction-form,
 .add-category-form,
 .add-vendor-form,
+.add-user-form,
 .choose-month-form {
     max-width: 450px;
 }

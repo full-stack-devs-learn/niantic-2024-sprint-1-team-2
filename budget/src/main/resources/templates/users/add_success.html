@@ -6,13 +6,16 @@
 
 
 <body>
-<div th:replace="fragments/nav :: nav"></div>
+    <div th:replace="fragments/nav :: nav"></div>
 
-<main class="container mt-4">
+    <main class="d-flex flex-column align-items-center gap-5 mt-5">
 
-    <h1><span th:text="${users.userName}"></span> was added successfully.</h1>
+        <h1>User <span class="fst-italic" th:text="${users.userName}"></span>&nbsp; was added successfully.</h1>
 
-</main>
+        <a href="/users">Go to Users Page</a>
+
+    </main>
 
 </body>
+
 </html>
