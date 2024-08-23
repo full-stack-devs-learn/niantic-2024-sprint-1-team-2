@@ -59,6 +59,59 @@ h1 {
     height: auto;
 }
 
+/* Adjustments for the #sign-up-today section */
+#sign-up-today {
+    margin-top: 20px; /* Reduce the top margin to minimize space above the footer */
+    margin-bottom: 0; /* Remove any bottom margin */
+    padding: 40px 20px; /* Adjust padding to maintain a balanced look */
+    width: 100%; /* Ensure it takes full width without needing margin adjustments */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow to distinguish from footer */
+    margin-left: 0; /* Ensure it’s centered with no additional margins */
+    text-align: center; /* Center align text */
+}
+
+#sign-up-today h2 {
+    margin-bottom: 20px; /* Adjust bottom margin of the heading */
+}
+
+#sign-up-today .btn {
+    padding: 10px 20px; /* Adjust button padding */
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 0; /* Ensure no extra margin above the footer */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #adb5bd;
+}
+
+
+
 
 
 /* Main Content Area for Admin Pages */
@@ -108,3 +161,47 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
+/* Edit and Delete Button Styles on Admin Pages */
+.admin-page .btn-edit,
+.admin-page .btn-delete {
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Edit Button */
+.admin-page .btn-edit {
+    background-color: #007bff;
+    color: #ffffff;
+    border: 1px solid #007bff;
+}
+
+.admin-page .btn-edit:hover {
+    background-color: #0056b3;
+    color: #ffffff;
+    border-color: #0056b3;
+}
+
+/* Delete Button */
+.admin-page .btn-delete {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: 1px solid #dc3545;
+}
+
+.admin-page .btn-delete:hover {
+    background-color: #c82333;
+    color: #ffffff;
+    border-color: #c82333;
+}
+
+/* Icons inside buttons */
+.admin-page .btn-edit i,
+.admin-page .btn-delete i {
+    margin-right: 2px;
+}

@@ -36,11 +36,11 @@
                     <td th:text="${#numbers.formatCurrency(transaction.amount)}"></td>
                     <td th:text="${transaction.notes}"></td>
                     <td>
-                        <a th:href="@{|/transactions/${transaction.transactionId}/edit|}"><i
+                        <a th:href="@{|/transactions/${transaction.transactionId}/edit|}" class="btn-edit"><i
                                 class="fa fa-pencil"></i>&nbsp;&nbsp;Edit</a>
                     </td>
                     <td>
-                        <a th:href="@{|/transactions/${transaction.transactionId}/delete|}"><i
+                        <a th:href="@{|/transactions/${transaction.transactionId}/delete|}" class="btn-delete"><i
                                 class="fa fa-trash"></i>&nbsp;&nbsp;Delete</a>
                     </td>
                 </tr>

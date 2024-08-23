@@ -6,7 +6,7 @@
 <body>
 <nav th:replace="fragments/nav :: nav"></nav>
 
-<main class="d-flex flex-column align-items-center gap-5 mt-5">
+<main class="admin-page d-flex flex-column align-items-center gap-5 mt-5">
     <h1 class="fw-bold">Report for <span th:text="${reportType} + ': ' + ${name}"></span></h1>
 
     <h3 th:if="${#lists.isEmpty(reportlines)}">

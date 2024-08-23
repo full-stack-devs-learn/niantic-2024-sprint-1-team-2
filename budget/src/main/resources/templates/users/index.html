@@ -7,7 +7,7 @@
     <nav th:replace="~{fragments/nav :: nav}"></nav>
 
     <main class="admin-page d-flex flex-column align-items-center gap-3 mt-5">
-        <h1 class="fw-bold">User</h1>
+        <h1 class="fw-bold">Users</h1>
 
         <a th:href="@{/users/add}" class="btn btn-secondary">Add user</a>
 
@@ -20,6 +20,8 @@
                 <th width="10%">Last Name</th>
                 <th width="10%">Phone</th>
                 <th width="10%">Email</th>
+                <th width="5%"></th>
+                <th width="5%"></th>
             </tr>
             </thead>
             <tbody>
@@ -30,6 +32,16 @@
                 <td th:text="${user.lastName}"></td>
                 <td th:text="${user.phone}"></td>
                 <td th:text="${user.email}"></td>
+                <td>
+                    <a th:href="@{|/users/${user.userId}/edit|}" class="btn-edit">
+                        <i class="fa fa-pencil"></i>&nbsp;&nbsp;Edit
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{|/users/${user.userId}/delete|}" class="btn-delete">
+                        <i class="fa fa-trash"></i>&nbsp;&nbsp;Delete
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>

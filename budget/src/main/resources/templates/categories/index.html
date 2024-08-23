@@ -29,12 +29,14 @@
                     </td>
                     <td th:text="${category.description}"></td>
                     <td>
-                        <a th:href="@{|/categories/${category.categoryId}/edit|}"><i
-                                class="fa fa-pencil"></i>&nbsp;&nbsp;Edit</a>
+                        <a th:href="@{|/categories/${category.categoryId}/edit|}" class="btn-edit">
+                            <i class="fa fa-pencil"></i>&nbsp;&nbsp;Edit
+                        </a>
                     </td>
                     <td>
-                        <a th:href="@{|/categories/${category.categoryId}/delete|}"><i
-                                class="fa fa-trash"></i>&nbsp;&nbsp;Delete</a>
+                        <a th:href="@{|/categories/${category.categoryId}/delete|}" class="btn-delete">
+                            <i class="fa fa-trash"></i>&nbsp;&nbsp;Delete
+                        </a>
                     </td>
                 </tr>
             </tbody>

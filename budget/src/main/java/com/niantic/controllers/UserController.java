@@ -43,5 +43,42 @@ public class UserController {
         return "users/add_success";
     }
 
+    @GetMapping("/users/{id}/edit")
+    public String editUser(Model model, @PathVariable int id) {
+        User user = userDao.getUserById(id);
+        model.addAttribute("users", user);
+        model.addAttribute("action", "edit");
+        return "users/add_edit";
+    }
+
+    @PostMapping("/users/{id}/edit")
+    public String editUser(Model model, @ModelAttribute("users") User user, @PathVariable int id) {
+        user.setUserId(id);
+        userDao.updateUser(user);
+        return "redirect:/users";
+    }
+
+    @GetMapping("/users/{id}/delete")
+    public String deleteUser(Model model, @PathVariable int id)
+    {
+        User user = userDao.getUserById(id);
+        if(user == null)
+        {
+            model.addAttribute("message", String.format("There is no user with id %d", id));
+            return "404";
+        }
+
+        model.addAttribute("users", user);
+        return "users/delete";
+    }
+
+    @PostMapping("/users/{id}/delete")
+    public String deleteUser(@PathVariable int id)
+    {
+        userDao.deleteUser(id);
+
+        return "redirect:/users";
+    }
+
 
 }

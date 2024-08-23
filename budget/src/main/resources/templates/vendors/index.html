@@ -27,12 +27,12 @@
                     <td th:text="${vendor.vendorName}"></td>
                     <td th:text="${vendor.website}"></td>
                     <td>
-                        <a th:href="@{|/vendors/${vendor.vendorId}/edit|}"><i
-                                class="fa fa-pencil"></i>&nbsp;&nbsp;Edit</a>
+                        <a th:href="@{|/vendors/${vendor.vendorId}/edit|}" class="btn-edit">
+                            <i class="fa fa-pencil"></i>&nbsp;&nbsp;Edit</a>
                     </td>
                     <td>
-                        <a th:href="@{|/vendors/${vendor.vendorId}/delete|}"><i
-                                class="fa fa-trash"></i>&nbsp;&nbsp;Delete</a>
+                        <a th:href="@{|/vendors/${vendor.vendorId}/delete|}" class="btn-delete">
+                            <i class="fa fa-trash"></i>&nbsp;&nbsp;Delete</a>
                     </td>
                 </tr>
             </tbody>

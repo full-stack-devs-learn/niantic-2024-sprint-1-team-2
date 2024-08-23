@@ -137,5 +137,39 @@ public class UserDao
                 user.getEmail());
     }
 
+    public void updateUser(User user) {
+
+        String sql = """
+                UPDATE users
+                SET user_name = ?
+                    , first_name = ?
+                    , last_name = ?
+                    , phone = ?
+                    , email = ?
+                WHERE user_id = ?    
+                """;
+
+        jdbcTemplate.update(sql
+                , user.getUserName()
+                , user.getFirstName()
+                , user.getLastName()
+                , user.getPhone()
+                , user.getEmail()
+                , user.getUserId());
+
+    }
+
+    public void deleteUser(int userId)
+    {
+        String sql = """
+                DELETE FROM users
+                WHERE user_id = ?
+                """;
+
+        jdbcTemplate.update(sql, userId);
+    }
+
+
+
 
 }
